@@ -3,7 +3,6 @@ import { recommendationsFactorys } from '../factors/reccomendationsFactory';
 import { recommendationRepository } from '../../src/repositories/recommendationRepository';
 
 beforeEach(async () => {
-  jest.resetAllMocks();
   jest.clearAllMocks();
 });
 
@@ -96,6 +95,9 @@ describe('Unit tests of recommendationServices', () => {
       .mockImplementationOnce((): any => {
         return { score: -9 };
       });
+    jest
+      .spyOn(recommendationRepository, 'remove')
+      .mockImplementationOnce((): any => {});
 
     await recommendationService.downvote(randomId);
 
@@ -139,7 +141,6 @@ describe('Unit tests of recommendationServices', () => {
       .mockImplementationOnce((): any => {
         return [{ test: '1561651561565156' }];
       });
-    
 
     const promise = await recommendationService.getRandom();
 
@@ -155,7 +156,7 @@ describe('Unit tests of recommendationServices', () => {
       });
 
     const promise = recommendationService.getRandom();
-    
+
     expect(promise).rejects.toEqual({
       type: 'not_found',
       message: ''
@@ -168,7 +169,7 @@ describe('Unit tests of recommendationServices', () => {
 
     const result = recommendationService.getScoreFilter(randomNumber);
 
-    expect(result).toBe("gt");
+    expect(result).toBe('gt');
   });
 
   test('It should return "lte" when random number is 0.7 or greater', () => {
@@ -176,6 +177,6 @@ describe('Unit tests of recommendationServices', () => {
 
     const result = recommendationService.getScoreFilter(randomNumber);
 
-    expect(result).toBe("lte");
+    expect(result).toBe('lte');
   });
 });

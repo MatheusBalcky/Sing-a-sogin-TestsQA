@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/server.ts",
-    "test:unit": "dotenv -e .env jest -- -i --coverage --testPathPattern=tests/units"
+    "test:unit": "dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/units",
+    "test:int": "dotenv -e .env.test jest recommendationsRoutes.test.ts"
   },
   "keywords": [],
   "author": "",

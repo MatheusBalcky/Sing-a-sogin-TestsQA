@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/server.ts",
-    "test:unit": "dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/units",
-    "test:int": "dotenv -e .env.test jest recommendationsRoutes.test.ts"
+    "test:unit": "dotenv -e .env.test jest -- --coverage --collectCoverageFrom=src/services/recommendationsService.ts --testPathPattern=tests/units",
+    "test:intposts": "dotenv -e .env.test jest recommendationsPosts.test.ts",
+    "test:intgets": "dotenv -e .env.test jest recommendationsGets.test.ts"
   },
   "keywords": [],
   "author": "",

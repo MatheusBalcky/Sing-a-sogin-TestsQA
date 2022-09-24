@@ -1,5 +1,5 @@
 import { recommendationService } from '../../src/services/recommendationsService';
-import { recommendationsFactorys } from '../factors/reccomendationsFactory';
+import { recommendationsFactorys } from '../factors/recommendationsFactory';
 import { recommendationRepository } from '../../src/repositories/recommendationRepository';
 
 beforeEach(async () => {
